@@ -1,17 +1,35 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
+// import '../styles/global.css';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
+    language: string;
+    title: string;
+    description: string;
+    author: string;
+    twitter_account: string,
+    // image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// `Astro.site` returns a URL made from site in Astro config.
+//    https://docs.astro.build/en/reference/api-reference/#astrosite
+// `Astro.url` A URL object constructed from the current Astro.request.url URL string value
+//    https://docs.astro.build/en/reference/api-reference/#astrourl
+//   `Astro.url.pathname`
+// `new URL(url, base)`
+//    [URL: URL() constructor - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)
+// for example https://www.fabrice-salvaire.fr/blog/markdown-style-guide/
+const canonical_url = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const {
+    language,
+    title,
+    description,
+    author,
+    twitter_account,
+    // , image = '/blog-placeholder-1.jpg'
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -25,23 +43,32 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<link rel="canonical" href={canonical_url} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content={author}>
 
 <!-- Open Graph / Facebook -->
+<meta property="og:locale" content={language} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<!-- <meta property="og:site_name" content="fabrice-salvaire.fr" /> -->
+<!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+<!-- <meta property="og:image" -->
+<!--     content="https://fabrice-salvaire.fr/static/img/logo-home-page-blue-150dpi.png" /> -->
+<!-- <meta property="og:image:width" content="272" /> -->
+<!-- <meta property="og:image:height" content="30" /> -->
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
+<meta name="twitter:site" content={twitter_account} />
+<meta name="twitter:creator" content={twitter_account} />
