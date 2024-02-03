@@ -8,7 +8,8 @@ import react from "@astrojs/react";
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 
-// https://github.com/natemoo-re/astro-icon
+// https://www.astroicon.dev
+//   https://github.com/natemoo-re/astro-icon
 import icon from "astro-icon";
 
 // https://astro.build/config
