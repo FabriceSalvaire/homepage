@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import LoremIpsum from '../components/LoremIpsum.astro';
 import {
     SITE_LANGUAGE,
     SITE_TITLE,
@@ -29,8 +30,12 @@ import {
     </head>
     <body>
 	{/* <CookieConsent /> */}
+        <div class="sr-only">
+            <a href="#content">Skip to main content</a>
+        </div>
 	<Header />
-	<main>
+	<main id="content">
+	    <LoremIpsum />
 	</main>
 	<Footer />
     </body>

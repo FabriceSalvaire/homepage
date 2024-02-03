@@ -18,25 +18,43 @@ const site = Astro.site.host;
 // }
 ---
 
-<hr class="sr-only" />
-<footer>
-    <h1 class="sr-only" id="page-footer">Sitemap</h1>
-    <div class="container">
-        <ul class="list-inline">
-            <li class="pull-right">
-		<a href="index.html#page-top" data-spy="scroll">
-		    <span class="fa fa-left fa-arrow-up"></span>
-		    Back to top
-		</a>
-	    </li>
-        </ul>
-	<div class="col-sm-16">
-            <p>Copyright © {year} {site} /
-		<a href="legal-notice.html">Legal Notice</a>
-	    </p>
-	</div>
+<!-- <hr class="sr-only" /> -->
+<footer class="px-16 py-8 mt-2.5 text-white bg-darkgray">
+    <!-- <h1 class="sr-only" id="page-footer">Sitemap</h1> -->
+    <div class="md:flex flex-row">
+        <p class="grow">
+            Copyright © {year} {site} /
+	    <a href="legal-notice.html">Legal Notice</a>
+        </p>
+        <button id="goto-top" class="flex-none mt-3 sm:mt-0" onclick="goto_top()">
+            <span class="flex flex-row items-center">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 fill-white mr-1"
+                    viewBox="0 0 384 512">
+                    <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/>
+                </svg>
+	        Back to top
+            </span>
+        </button>
     </div>
 </footer>
+
+{/*
+<script>
+const goto_top_button = document.getElementById("goto-top");
+goto_top_button.addEventListener('click', () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});
+</script>
+*/}
+
+<script is:inline>
+function goto_top() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 
 <style>
 </style>
