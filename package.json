@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
+    "@astrojs/language-server": "^2.6.2",
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/react": "^3.0.9",
     "@astrojs/rss": "^4.0.4",
@@ -19,6 +20,7 @@
     "@types/react": "^18.2.51",
     "@types/react-dom": "^18.2.18",
     "astro": "^4.3.1",
+    "astro-compress": "^2.2.9",
     "astro-icon": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,6 +28,8 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.1.64"
+    "@iconify-json/mdi": "^1.1.64",
+    "prettier": "^3.2.4",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }

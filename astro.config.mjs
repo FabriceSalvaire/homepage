@@ -12,6 +12,9 @@ import tailwind from "@astrojs/tailwind";
 //   https://github.com/natemoo-re/astro-icon
 import icon from "astro-icon";
 
+// https://github.com/astro-community/AstroCompress
+import compress from "astro-compress";
+
 // https://astro.build/config
 export default defineConfig({
     site: 'https://fabrice-salvaire.fr',
@@ -25,9 +28,19 @@ export default defineConfig({
 		 // mdi: ["*"], // (Default) Loads entire Material Design Icon set
 		 mdi: [
 		     'arrow-up-thin',
+		     'close',
+		     'github',
 		     'menu',
 		 ],
 	     },
 	}),
+	// at the end !
+	// compress({
+	//     CSS: true,
+	//     HTML: true,
+	//     Image: false,
+	//     JavaScript: true,
+	//     SVG: false,
+	// }),
     ]
 });
