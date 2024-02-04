@@ -8,6 +8,7 @@ import {
 } from '../consts';
 
 import logo_home_page from '../assets/logo-home-page-150dpi.png';
+import type { Debug } from 'astro:components';
 
 const menu = [
     {page: "en/about/index.html", title: "About"},
@@ -39,20 +40,18 @@ const menu = [
 
 <header class="px-16 pt-4 pb-4 text-white bg-darkgray" role="banner">
     <div class="flex flex-row items-center">
-        <button class="md:hidden pr-4"
-            type="button"
-            aria-controls="bdSidebar" aria-label="Toggle docs navigation">
-            <Icon name="mdi:menu" size="32px" />
+        <button id="open-sidebar" type="button" class="md:invisible pr-4">
+            <Icon name="mdi:menu" size={32} />
             <!-- <span class="d-none fs-6 pe-1">Browse</span> -->
         </button>
 
 	<a class="flex-none" href={Astro.site}>
-            <span class="sr-only">fabrice-salvaire.fr</span>
+            <!-- <span class="sr-only">fabrice-salvaire.fr</span> -->
 	    <Image src={logo_home_page} alt="fabrice-salvaire.fr logo" height="50" />
 	</a>
 
-        <nav class="grow" role="navigation">
-            <ul id="navbar" class="flex flex-row-reverse" role="menubar">
+        <nav class="grow invisible md:visible" role="navigation">
+            <ul class="flex flex-row-reverse" role="menubar">
                 {
                     menu.map((item) => (
                         <HeaderLink href={item.page}>{item.title}</HeaderLink>
@@ -60,8 +59,51 @@ const menu = [
                 }
             </ul>
         </nav>
+
+        <div id="sidebar-menu" class="invisible text-white bg-darkgray">
+            <button id="close-sidebar" type="button" class="">
+                <Icon name="mdi:close" size={32} />
+            </button>
+            <nav class="pt-4" role="navigation">
+                <ul role="menubar">
+                    {
+                        menu.map((item) => (
+                            <HeaderLink href={item.page}>{item.title}</HeaderLink>
+                        ))
+                    }
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>
 
+<script>
+const open_sidebar_button = document.getElementById('open-sidebar');
+const close_sidebar_button = document.getElementById('close-sidebar');
+const sidebar_menu = document.getElementById('sidebar-menu');
+function toggle_sidebar() {
+    console.log("toggle menu")
+    sidebar_menu.classList.toggle('invisible');
+}
+open_sidebar_button.addEventListener('click', toggle_sidebar);
+close_sidebar_button.addEventListener('click', toggle_sidebar);
+</script>
+
 <style>
+#sidebar-menu {
+    /* how to get tailwind color ? */
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 95%;
+    padding: 2em;
+}
+
+#close-sidebar {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
 </style>
