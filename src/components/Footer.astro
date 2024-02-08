@@ -4,20 +4,6 @@ import { Icon } from 'astro-icon/components'
 const year = new Date().getFullYear();
 
 const site = Astro.site.host;
-// URL {
-//   href: 'https://fabrice-salvaire.fr/',
-//   origin: 'https://fabrice-salvaire.fr',
-//   protocol: 'https:',
-//   username: '',
-//   password: '',
-//   host: 'fabrice-salvaire.fr',
-//   hostname: 'fabrice-salvaire.fr',
-//   port: '',
-//   pathname: '/',
-//   search: '',
-//   searchParams: URLSearchParams {},
-//   hash: ''
-// }
 ---
 
 <!-- <hr class="sr-only" /> -->
@@ -38,15 +24,9 @@ const site = Astro.site.host;
 </footer>
 
 {/*
-<script>
-const goto_top_button = document.getElementById("goto-top");
-goto_top_button.addEventListener('click', () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-});
-</script>
+document.body.scrollTop = 0; // For Safari
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 */}
-
 <script is:inline>
 function goto_top() {
   document.body.scrollTop = 0;
